@@ -14,6 +14,15 @@ router.get('/', async (req, res) => {
   }
 });
 
+router.get('/search', async (req, res) => {
+  try {
+    res.render('search'), {
+      logged_in: req.session.logged_in
+    }
+  } catch (err) {
+    res.status(500).json(err);
+  }
+})
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {
