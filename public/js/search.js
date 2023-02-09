@@ -20,7 +20,7 @@ submitButton.addEventListener('click', async function(event) {
    
 
     if (diet !== ""){
-        apiURL.concat(`&diet=${diet}`)
+        apiURL.push(`&diet=${diet}`)
     }
     if(health !== ""){
         apiURL.push(`&health=${health}`)
