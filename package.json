@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "seed": "bash ",
+    "dbInit": "bash config/dbInit",
     "dbStart": "node models/index.js && node seeds/seed.js && node server.js"
   },
   "keywords": [],
@@ -20,7 +20,8 @@
     "express-handlebars": "^5.2.0",
     "express-session": "^1.17.1",
     "mysql2": "^2.2.5",
-    "sequelize": "^6.3.5"
+    "sequelize": "^6.3.5",
+    "bulma": "0.9.4"
   },
   "devDependencies": {
   }
