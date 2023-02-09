@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../models');
-// const withAuth = require('../utils/auth');
+const withAuth = require('../utils/auth');
 
 //Renders Home Page
 router.get('/', async (req, res) => {
@@ -19,23 +19,24 @@ router.get('/', async (req, res) => {
 router.get('/profile', withAuth, async (req, res) => {
   try {
     // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-    });
+    // const userData = await User.findByPk(req.session.user_id, {
+    //   attributes: { exclude: ['password'] },
+    // });
 
-    const user = userData.get({ plain: true });
+    // const user = userData.get({ plain: true });
 
     res.render('profile', {
-      ...user,
-      logged_in: true
+      logged_in: req.session.logged_in
     });
+    // res.status(200).json({message: 'Success!'})
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
 //load the login page
-router.post('/login', async (req, res) => {
+router.get('/login', (req, res) => {
+  // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
     res.redirect('/profile');
     return;

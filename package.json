@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dbInit": "bash config/dbInit",
+    "seed": "bash config/dbInit.sh",
     "dbStart": "node models/index.js && node seeds/seed.js && node server.js"
   },
   "keywords": [],

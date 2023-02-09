@@ -4,4 +4,5 @@ mysql -u root --password="C@rri11o"  << EOF
 SOURCE db/schema.sql;
 quit
 EOF
-echo 'Successfully initialized Database'
+echo 'Seeding Database'
+node seeds/seed.js
