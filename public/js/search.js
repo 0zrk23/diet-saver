@@ -1,9 +1,13 @@
+const fs = require('fs');
+
 const apiId = 'a4effe10';
 const apiKey = 'f944412b3011c0f498d615d4abf9bcf6';
 let submitButton = document.getElementById("search");
+
 const imageSize = 1;
 
-submitButton.addEventListener('click', function(event) {
+
+submitButton.addEventListener('click', async function(event) {
     event.preventDefault();
     let diet = document.getElementById("diet").value;
     let health = document.getElementById("health").value;
@@ -34,14 +38,12 @@ submitButton.addEventListener('click', function(event) {
         apiURL.push(`&imageSize=THUMBNAIL`)
     }
 
-    console.log(apiURL.join(''));
+    // console.log(apiURL.join(''));
     
-    fetch(apiURL.join(''))
-    .then(function (response){
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    })
+    const apiResponse = await (await (fetch(apiURL.join('')))).json();
+    // const apiResponse = await apiResponseData.json();
+    // console.log(apiResponse);
+    const recipies = apiResponse.hits;
+    
   });
 
