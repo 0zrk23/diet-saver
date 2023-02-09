@@ -11,17 +11,36 @@ Recipe.init(
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    calories: {
+      type: DataTypes.DECIMAL,
       allowNull: false,
     },
-    description: {
+    cuisine_type: {
       type: DataTypes.STRING,
     },
-    date_created: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: DataTypes.NOW,
+    health_labels: {
+      type: DataTypes.STRING,
+    },
+    image: {
+      type: DataTypes.STRING,
+    },
+    ingredients_lines: {
+      type: DataTypes.STRING,
+    },
+    label: {
+      type: DataTypes.STRING,
+    },
+    meal_type: {
+      type: DataTypes.STRING,
+    },
+    total_time: {
+      type: DataTypes.INTEGER,
+    },
+    url: {
+      type: DataTypes.STRING,
+    },
+    yield: {
+      type: DataTypes.INTEGER,
     },
     user_id: {
       type: DataTypes.INTEGER,
