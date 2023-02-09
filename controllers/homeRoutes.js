@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 
 router.get('/search', async (req, res) => {
   try {
-    res.render('search_form'), {
+    res.render('search'), {
       logged_in: req.session.logged_in
     }
   } catch (err) {
