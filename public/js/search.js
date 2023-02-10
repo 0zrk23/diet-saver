@@ -1,9 +1,13 @@
+
+
 const apiId = 'a4effe10';
 const apiKey = 'f944412b3011c0f498d615d4abf9bcf6';
 let submitButton = document.getElementById("search");
+
 const imageSize = 1;
 
-submitButton.addEventListener('click', function(event) {
+
+submitButton.addEventListener('click', async function(event) {
     event.preventDefault();
     let diet = document.getElementById("diet").value;
     let health = document.getElementById("health").value;
@@ -34,14 +38,38 @@ submitButton.addEventListener('click', function(event) {
         apiURL.push(`&imageSize=THUMBNAIL`)
     }
 
-    console.log(apiURL.join(''));
+    // console.log(apiURL.join(''));
     
-    fetch(apiURL.join(''))
-    .then(function (response){
-        return response.json();
-    })
-    .then(function (data) {
-        console.log(data);
-    })
+    const apiResponse = await (await (fetch(apiURL.join('')))).json();
+    const hits = apiResponse.hits;
+
+    const recipies = [];
+    //loop through array and descructure array 
+    hits.forEach(hit => {
+        const recipeData = hit.recipe;
+        const recipe = {};
+        recipe.calories = recipeData.calories,
+        recipe.cuisineType = recipeData.cuisineType,
+        recipe.healthLabels = recipeData.healthLabels,
+        recipe.image = recipeData.image,
+        recipe.ingredients = recipeData.ingredientLines,
+        recipe.label = recipeData.label,
+        recipe.mealType = recipeData.mealType,
+        recipe.totalTime = recipeData.totalTime,
+        recipe.url = recipeData.url,
+        recipe.yield = recipeData.yield
+        recipies.push(recipe);
+    });
+    console.log(recipies)
+
+
+
+    // const strRecipies = JSON.stringify({recipies: recipies});
+    // const response = await fetch('/api/recipies/create_seeds',{
+    //     method: 'POST',
+    //     body: strRecipies,
+    //     headers: { 'Content-Type': 'application/json' },
+    // });
+
   });
 
