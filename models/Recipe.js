@@ -16,22 +16,22 @@ Recipe.init(
       allowNull: false,
     },
     cuisine_type: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
     },
     health_labels: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
     },
     image: {
       type: DataTypes.STRING,
     },
-    ingredients_lines: {
-      type: DataTypes.STRING,
+    ingredients: {
+      type: DataTypes.JSON,
     },
     label: {
       type: DataTypes.STRING,
     },
     meal_type: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
     },
     total_time: {
       type: DataTypes.INTEGER,

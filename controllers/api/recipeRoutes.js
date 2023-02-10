@@ -5,14 +5,12 @@ const fs = require('fs');
 
 router.post('/create_seeds', async (req, res) => {
   try {
-    await fs.writeFileSync('../../seeds/recipieData.',JSON.stringify(req.body.data), err => {
-      if(!err){
-        console.log('nice')
-      }
-    })
-
+    // console.log(req.body.recipies);
+    await fs.writeFileSync('seeds/recipieData.json', JSON.stringify(req.body.recipies));
+    
     res.status(200).json({message: 'Success!'});
   } catch (err) {
+    console.log(err);
     res.status(400).json(err);
   }
 });

@@ -1,4 +1,4 @@
-const fs = require('fs');
+
 
 const apiId = 'a4effe10';
 const apiKey = 'f944412b3011c0f498d615d4abf9bcf6';
@@ -41,9 +41,35 @@ submitButton.addEventListener('click', async function(event) {
     // console.log(apiURL.join(''));
     
     const apiResponse = await (await (fetch(apiURL.join('')))).json();
-    // const apiResponse = await apiResponseData.json();
-    // console.log(apiResponse);
-    const recipies = apiResponse.hits;
-    
+    const hits = apiResponse.hits;
+
+    const recipies = [];
+    //loop through array and descructure array 
+    hits.forEach(hit => {
+        const recipeData = hit.recipe;
+        const recipe = {};
+        recipe.calories = recipeData.calories,
+        recipe.cuisineType = recipeData.cuisineType,
+        recipe.healthLabels = recipeData.healthLabels,
+        recipe.image = recipeData.image,
+        recipe.ingredients = recipeData.ingredientLines,
+        recipe.label = recipeData.label,
+        recipe.mealType = recipeData.mealType,
+        recipe.totalTime = recipeData.totalTime,
+        recipe.url = recipeData.url,
+        recipe.yield = recipeData.yield
+        recipies.push(recipe);
+    });
+    console.log(recipies)
+
+
+
+    const strRecipies = JSON.stringify({recipies: recipies});
+    const response = await fetch('/api/recipies/create_seeds',{
+        method: 'POST',
+        body: strRecipies,
+        headers: { 'Content-Type': 'application/json' },
+    });
+
   });
 
