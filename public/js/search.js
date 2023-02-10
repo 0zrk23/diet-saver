@@ -64,12 +64,12 @@ submitButton.addEventListener('click', async function(event) {
 
 
 
-    const strRecipies = JSON.stringify({recipies: recipies});
-    const response = await fetch('/api/recipies/create_seeds',{
-        method: 'POST',
-        body: strRecipies,
-        headers: { 'Content-Type': 'application/json' },
-    });
+    // const strRecipies = JSON.stringify({recipies: recipies});
+    // const response = await fetch('/api/recipies/create_seeds',{
+    //     method: 'POST',
+    //     body: strRecipies,
+    //     headers: { 'Content-Type': 'application/json' },
+    // });
 
   });
 
