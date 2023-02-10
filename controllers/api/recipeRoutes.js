@@ -1,6 +1,19 @@
 const router = require('express').Router();
 const { Recipe } = require('../../models');
 const withAuth = require('../../utils/auth');
+const fs = require('fs');
+
+router.post('/create_seeds', async (req, res) => {
+  try {
+    // console.log(req.body.recipies);
+    await fs.writeFileSync('seeds/recipieData.json', JSON.stringify(req.body.recipies), 'utf8');
+    
+    res.status(200).json({message: 'Success!'});
+  } catch (err) {
+    console.log(err);
+    res.status(400).json(err);
+  }
+});
 
 
 router.post('/', withAuth, async (req, res) => {
