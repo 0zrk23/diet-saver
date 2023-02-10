@@ -22,7 +22,7 @@ Recipe.init(
       type: DataTypes.JSON,
     },
     image: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     ingredients: {
       type: DataTypes.JSON,
@@ -33,29 +33,26 @@ Recipe.init(
     meal_type: {
       type: DataTypes.JSON,
     },
-    total_time: {
-      type: DataTypes.INTEGER,
-    },
     url: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
     },
     yield: {
       type: DataTypes.INTEGER,
     },
-    user_id: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: 'user',
-        key: 'id',
-      },
-    },
+    // user_id: {
+    //   type: DataTypes.INTEGER,
+    //   references: {
+    //     model: 'user',
+    //     key: 'id',
+    //   },
+    // },
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'Recipe',
+    modelName: 'recipe',
   }
 );
 

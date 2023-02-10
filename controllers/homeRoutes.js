@@ -16,13 +16,30 @@ router.get('/', async (req, res) => {
 
 router.get('/search', async (req, res) => {
   try {
-    res.render('search'), {
+    console.log(req.body.recipies);
+    res.render('search', {
+
       logged_in: req.session.logged_in
-    }
+    })
   } catch (err) {
     res.status(500).json(err);
   }
 })
+
+// router.post('/search', async (req, res) => {
+//   try {
+//     console.log(req.body.recipies);
+//     const recipies = req.body.recipies;
+//     // res.render('profile');
+//     res.render('search', {
+//       // recipies: "hello",
+//       test: 'hello',
+//       logged_in: req.session.logged_in
+//     });
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// })
 
 // Use withAuth middleware to prevent access to route
 router.get('/profile', withAuth, async (req, res) => {

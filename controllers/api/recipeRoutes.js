@@ -6,7 +6,7 @@ const fs = require('fs');
 router.post('/create_seeds', async (req, res) => {
   try {
     // console.log(req.body.recipies);
-    await fs.writeFileSync('seeds/recipieData.json', JSON.stringify(req.body.recipies), 'utf8');
+    await fs.writeFileSync('seeds/data.json', JSON.stringify(req.body.recipies), 'utf8');
     
     res.status(200).json({message: 'Success!'});
   } catch (err) {

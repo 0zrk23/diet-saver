@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User } = require('../../models');
+const { User, Recipe } = require('../../models');
 
 //Create New user
 router.post('/', async (req, res) => {
@@ -60,5 +60,20 @@ router.post('/logout', (req, res) => {
     res.status(404).end();
   }
 });
+
+router.get('/:id/favorites', async (req,res) => {
+  try {
+    const userData = await User.findByPk(req.params.id,{
+      include: [{model: Recipe}]
+    });
+    const user = userData.get({plain: true});
+    const favorites = user.recipes;
+    // console.log(user);
+    res.status(200).json(favorites);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
 
 module.exports = router;
