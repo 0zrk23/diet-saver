@@ -86,14 +86,12 @@
           <button type="submit" name="search-btn" id="search">Search</button>
 </form>
 
-{{!-- {{#each recipies as |recipe|}}
-{{> recipe_details}}
-Recipe
-{{/each}} --}}
+<div id="showRecipe"></div>
 
-{{test}}
+{{#each hits.length}}
 
-{{!-- {{recipies}} --}}
+ 
 
+{{/each }}
 
 <script src="/js/search.js"></script>
