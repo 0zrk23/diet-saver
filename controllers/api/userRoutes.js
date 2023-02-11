@@ -1,5 +1,6 @@
 const router = require('express').Router();
-const { User, Recipe } = require('../../models');
+const { User, Recipe, Favorites } = require('../../models');
+const withAuth = require('../../utils/auth');
 
 //Create New user
 router.post('/', async (req, res) => {
@@ -61,7 +62,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.get('/:id/favorites', async (req,res) => {
+router.get('/:id/favorites', /*withAuth,*/ async (req,res) => {
   try {
     const userData = await User.findByPk(req.params.id,{
       include: [{model: Recipe}]
@@ -75,5 +76,73 @@ router.get('/:id/favorites', async (req,res) => {
     res.status(500).json(err);
   }
 })
+
+router.post('/:id/favorites', /*withAuth,*/ async (req,res) => {
+  try {
+    // console.log(req.body)
+    const recipeData = await Recipe.findOrCreate({
+      where: {
+        label: req.body.label
+      },
+      defaults: {
+        ...req.body
+      }
+    })
+    // console.log(recipeData);
+    const recipe = recipeData[0].get({plain: true});
+    // console.log(recipe)
+    // console.log(recipe.id);
+    const favorited = await Favorites.findOne({
+      where: {
+        user_id: req.params.id,
+        recipe_id: recipe.id
+      }
+    });
+    // console.log(favorited);
+    if (favorited){
+      // console.log()
+      res.status(400).json({message: 'You have already favorited this'})
+      return;
+    }
+    const newFavoriteData = await Favorites.create({
+      user_id: req.params.id,
+      recipe_id: recipe.id
+    });
+    const newFavorite = newFavoriteData.get({plain: true});
+    res.status(200).json({message: 'Success!', newFavorite});
+  } catch (err) {
+    console.log(err);
+    res.status(200).json(err);
+  }
+})
+
+router.delete('/:id/favorites', /*withAuth,*/ async (req,res) => {
+  try {
+    console.log(req.body.recipe_id);
+    const favorited = await Favorites.findOne({
+      where: {
+        user_id: req.params.id,
+        recipe_id: req.body.recipe_id
+      }
+    });
+    // console.log(favorited);
+
+    if(!favorited){
+      res.status(404).json({message: "None of this user's favorites match this recipe_id!"});
+      return
+    }
+    const deletedFavorite = await Favorites.destroy({
+      where: {
+        user_id: req.params.id,
+        recipe_id: req.body.recipe_id
+      }
+    })
+    // console.log(deletedFavorite)
+    res.status(200).json({message: 'Success!',deletedFavorite});
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

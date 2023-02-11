@@ -29,6 +29,8 @@ Recipe.init(
     },
     label: {
       type: DataTypes.STRING,
+      unique: true
+
     },
     meal_type: {
       type: DataTypes.JSON,
