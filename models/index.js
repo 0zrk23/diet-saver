@@ -1,13 +1,9 @@
 const User = require('./User');
 const Recipe = require('./Recipe');
+const Favorites = require('./Favorites')
 
-User.hasMany(Recipe, {
-  foreignKey: 'user_id',
-  onDelete: 'CASCADE'
-});
+User.belongsToMany(Recipe, {through: Favorites})
 
-Recipe.belongsTo(User, {
-  foreignKey: 'user_id'
-});
+Recipe.belongsToMany(User, {through: Favorites});
 
-module.exports = { User, Recipe };
+module.exports = { User, Recipe, Favorites };

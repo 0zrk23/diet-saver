@@ -45,24 +45,25 @@ submitButton.addEventListener('click', async function(event) {
     const apiResponse = await (await (fetch(apiURL.join('')))).json();
     const hits = apiResponse.hits;
 
+    console.log(hits);
+
     const recipies = [];
     //loop through array and descructure array 
     hits.forEach(hit => {
         const recipeData = hit.recipe;
         const recipe = {};
         recipe.calories = recipeData.calories,
-        recipe.cuisineType = recipeData.cuisineType,
-        recipe.healthLabels = recipeData.healthLabels,
+        recipe.cuisine_type = recipeData.cuisineType,
+        recipe.health_labels = recipeData.healthLabels,
         recipe.image = recipeData.image,
         recipe.ingredients = recipeData.ingredientLines,
         recipe.label = recipeData.label,
-        recipe.mealType = recipeData.mealType,
-        recipe.totalTime = recipeData.totalTime,
+        recipe.meal_type = recipeData.mealType,
         recipe.url = recipeData.url,
         recipe.yield = recipeData.yield
         recipies.push(recipe);
     });
-    console.log(recipies)
+    // console.log(recipies)
 
     $("#allCard").remove();
     generateHTML(recipies);
