@@ -1,44 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fund My Project!</title>
-  <link rel="stylesheet" href="/css/jass.css">
-  <link rel="stylesheet" href="/css/style.css">
-</head>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My Menu</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/jass.css">
+    <link rel="stylesheet" href="/css/style.css">
+    
+  </head>
 
-<body>
-  <div class="flex-column justify-space-around">
-    <header class="display-flex justify-space-between align-center p-2">
-      <h1>
-        <span role="img" aria-label="money">💸</span>
-        <a href="/">Fund My Project!</a>
-      </h1>
-      <nav>
-        <!-- Conditionally render login or logout links -->
+  <body>
+    <section class="hero">
+      <div class="hero-body flex-column">
+        <header>
+          <div class="navbar-menu" id="nav-links">
+            <nav class="navbar-start">
+            <a href="/" class="navbar-item">home page</a>
+            </nav>
+            <img class="navbar-item is-horizontal-center" src="/img/my-menu-logo-02.png" alt="site logo">
+            <nav class="navbar-end">
+              <a href="/profile" class="navbar-item">my diet</a>
+              <a href="#" class="navbar-item">search</a>
+            
+              <!-- Conditionally render login or logout links -->
+              {{#if logged_in}}
+              <a class="navbar-item" href="/profile">profile</a> |
+              <button class="no-button navbar-item" id="logout">logout</button>
+              {{else}}
+              <a class="navbar-item" href="/login">login</a>
+              {{/if}}
+
+            </nav>
+          </div>
+        </header>
+        <section class="hero is-fullheight">
+        <main class="container container-fluid mt-5">
+          <!-- Render the sub layout -->
+          {{{ body }}}
+        </main>
+        <footer>
+          <div class="content has-text-centered">
+            <p>
+              Created by <a href="https://github.com/0zrk23">Gustavo Carrillo</a>, 
+              <a href="https://github.com/kfarshchian">Kameron Farshchian</a> and 
+              <a href="https://github.com/TheKelsenator">Kelsey O'Kelley</a>.
+            </p>
+          </div>
+        </footer>
+        </section>
+
+        <!-- Render script for logged in users only -->
         {{#if logged_in}}
-        <a href="/profile">profile</a> |
-        <button class="no-button" id="logout">logout</button>
-        {{else}}
-        <a href="/login">login</a>
+        <script src="/js/logout.js"></script>
         {{/if}}
-      </nav>
-    </header>
-    <main class="container container-fluid mt-5">
-      <!-- Render the sub layout -->
-      {{{ body }}}
-    </main>
-    <footer>
-      
-    </footer>
-  </div>
-
-  <!-- Render script for logged in users only -->
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
-</body>
+      </div>
+    </section>
+  </body>
 
 </html>

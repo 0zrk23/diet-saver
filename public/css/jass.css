@@ -57,9 +57,9 @@ hr {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 pre {
-  font-family: monospace, monospace;
+  font-family: serif, serif;
   /* 1 */
-  font-size: 1em;
+  font-size: 7em;
   /* 2 */
 }
 
@@ -79,9 +79,9 @@ a {
 abbr[title] {
   border-bottom: none;
   /* 1 */
-  text-decoration: underline;
+  text-decoration: none;
   /* 2 */
-  text-decoration: underline dotted;
+  text-decoration: none;
   /* 2 */
 }
 
@@ -100,7 +100,7 @@ strong {
 code,
 kbd,
 samp {
-  font-family: monospace, monospace;
+  font-family: serif, serif;
   /* 1 */
   font-size: 1em;
   /* 2 */
@@ -356,9 +356,8 @@ body {
 body {
   margin: 0;
   padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+  font-family: sans-serif;
   font-size: 16px;
-  color: #1a1a1a;
 }
 
 h1,
@@ -419,15 +418,23 @@ button {
   margin: 0;
 }
 
-a {
-  color: #1b89bc;
+.navbar-item {
+  font-size: 24px;
+  color: #D5D9D0;
   text-decoration: none;
 }
 
-a:hover {
-  color: #065b83;
-  text-decoration: underline;
+.navbar-item :hover{
+  background-color: #35495A;
+  text-decoration: none;
 }
+
+footer{
+  margin-bottom: 0px;
+  color: #D5D9D0;
+  background-color: #B5BFAA;
+}
+
 
 /* HEIGHT / WIDTH UTILS */
 .w-100 {
