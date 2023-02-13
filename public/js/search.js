@@ -4,9 +4,17 @@ const apiId = 'a4effe10';
 const apiKey = 'f944412b3011c0f498d615d4abf9bcf6';
 let submitButton = document.getElementById("search");
 let htmlpassin = document.getElementById('#showRecipe');
-let removeCard = document.getElementById('#allCard');
+const removeCard = document.getElementById("#allCard");
 
 const imageSize = 1;
+
+
+
+
+submitButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    $('.card').remove();
+});
 
 
 submitButton.addEventListener('click', async function(event) {
@@ -65,7 +73,7 @@ submitButton.addEventListener('click', async function(event) {
     });
     // console.log(recipies)
 
-    $("#allCard").remove();
+    
     generateHTML(recipies);
     });
     
@@ -102,4 +110,5 @@ submitButton.addEventListener('click', async function(event) {
     $('#showRecipe').append(allRecipes)
     console.log(allRecipes);
     }
+
 
