@@ -4,22 +4,21 @@
     bottom: 0
   }
   
-#slider .card-content{
+#slider .card-content {
     max-width: 50%;
   }
   
-#slider{
+#slider {
     overflow: hidden;
   }
 
-
 @media screen and (max-width: 1023px) {
-    #slider .card-content{
-      display: none;
-    }
+  #slider .card-content{
+    display: none;
   }
+}
+
 #carousel{
-  
   height: 400px;
   width: 800px;
 }
@@ -45,7 +44,6 @@
   right: 0;
   border-radius: 3px 0 0 3px;
 }
-
 
 .numbertext {
   color: #f2f2f2;
