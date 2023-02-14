@@ -42,6 +42,11 @@ header {
   background-color: #D5D9D0;
 }
 
+#login-card {
+  height: 350px;
+  width: 600px;
+}
+
 footer {
   margin-bottom: 0px;
   color: #D5D9D0;
