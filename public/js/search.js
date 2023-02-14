@@ -60,7 +60,7 @@ submitButton.addEventListener('click', async function(event) {
     hits.forEach(hit => {
         const recipeData = hit.recipe;
         const recipe = {};
-        recipe.calories = recipeData.calories,
+        recipe.calories = Math.round(recipeData.calories),
         recipe.cuisine_type = recipeData.cuisineType,
         recipe.health_labels = recipeData.healthLabels,
         recipe.image = recipeData.image,
@@ -155,8 +155,6 @@ const recipeFavoriteFormHandler = async (event) => {
             body: JSON.stringify(recipe),
             headers: { 'Content-Type': 'application/json' }
         })
-
-        console.log(response.message)
 
         if(response.redirected){
             document.location.replace('/login')

@@ -85,37 +85,38 @@ router.post('/favorites', async (req,res) => {
       res.status(200);
       return;
     }
-    console.log('here');
-  //   const recipeData = await Recipe.findOrCreate({
-  //     where: {
-  //       label: req.body.label
-  //     },
-  //     defaults: {
-  //       ...req.body
-  //     }
-  //   })
-  //   // console.log(recipeData);
-  //   const recipe = recipeData[0].get({plain: true});
-  //   // console.log(recipe)
-  //   // console.log(recipe.id);
-  //   const favorited = await Favorites.findOne({
-  //     where: {
-  //       user_id: req.session.user_id,
-  //       recipe_id: recipe.id
-  //     }
-  //   });
-  //   // console.log(favorited);
-  //   if (favorited){
-  //     // console.log()
-  //     res.status(400).json({message: 'You have already favorited this'})
-  //     return;
-  //   }
-  //   const newFavoriteData = await Favorites.create({
-  //     user_id: req.session.user_id,
-  //     recipe_id: recipe.id
-  //   });
-  //   const newFavorite = newFavoriteData.get({plain: true});
-    res.status(200).json({message: 'Success!'/*, newFavorite*/});
+    // console.log(req.body);
+    const recipeData = await Recipe.findOrCreate({
+      where: {
+        label: req.body.label
+      },
+      defaults: {
+        ...req.body
+      }
+    })
+    // console.log(recipeData[0].get({plain: true}));
+    const recipe = recipeData[0].get({plain: true});
+    // console.log(recipe)
+    // console.log(recipe.id);
+    const favorited = await Favorites.findOne({
+      where: {
+        user_id: req.session.user_id,
+        recipe_id: recipe.id
+      }
+    });
+    console.log(favorited);
+    if (favorited){
+      // console.log()
+      res.status(400).json({message: 'You have already favorited this'})
+      return;
+    }
+    const newFavoriteData = await Favorites.create({
+      user_id: req.session.user_id,
+      recipe_id: recipe.id
+    });
+    const newFavorite = newFavoriteData.get({plain: true});
+    console.log(newFavorite);
+    res.status(200).json({message: 'Success!' , newFavorite});
   } catch (err) {
     console.log(err);
     res.status(200).json(err);
