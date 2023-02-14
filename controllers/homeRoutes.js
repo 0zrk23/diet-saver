@@ -1,6 +1,10 @@
 const router = require('express').Router();
 const { Recipe, User } = require('../models');
 const withAuth = require('../utils/auth');
+// const $ = require('jquery');
+// const { JSDOM } = require( "jsdom" );
+// const { window } = new JSDOM( "" );
+// const $ = require( "jquery" )( window );
 
 //Renders Home Page
 router.get('/', async (req, res) => {
@@ -16,12 +20,15 @@ router.get('/', async (req, res) => {
 
 router.get('/search', async (req, res) => {
   try {
-    console.log(req.body.recipies);
+    // console.log(req.body.recipies);
+    // const searchResults = JSON.parse(window.localStorage.getItem('search_results'));
+    // console.log(searchResults);
     res.render('search', {
-
       logged_in: req.session.logged_in
     })
+
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 })
