@@ -31,6 +31,17 @@ header {
   text-decoration: none;
 }
 
+#carousel-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#get-started-button {
+  /* color: #35495A; not changing text color 2/13 9:40pm */
+  background-color: #D5D9D0;
+}
+
 footer {
   margin-bottom: 0px;
   color: #D5D9D0;
