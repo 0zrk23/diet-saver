@@ -43,7 +43,12 @@ header {
 }
 
 #login-card {
-  height: 350px;
+  height: 375px;
+  width: 600px;
+}
+
+#signup-card {
+  height: 450px;
   width: 600px;
 }
 
