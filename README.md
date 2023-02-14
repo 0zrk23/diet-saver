@@ -1,6 +1,4 @@
-# Project Two: 
-
-## Interactive Full-Stack-Project
+# Interactive Full-Stack-Project
 
 University of Utah
 Full-Stack Web Development Coding Bootcamp
@@ -8,6 +6,8 @@ Full-Stack Web Development Coding Bootcamp
 -Fall 2022 - Spring 2023
 
 ## Description 
+
+  A searchable site to help you find and save meals specific to your preferences, allergies, number of calories and/or your specific dietetary needs. Nutritional information helping you utilize food for growth, health, and medicine.
 
 ## User Story
 
@@ -25,7 +25,7 @@ Full-Stack Web Development Coding Bootcamp
   * Have a folder structure that meets the MVC paradigm.
   * Include authentication (express-session and cookies).
   * Protect API keys and sensitive information with environment variables.
-  * Have a clean repository that meets quality coding standards (file  structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
+  * Have a clean repository that meets quality coding standards (file     structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
   * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
   * Finally, you must add your project to the portfolio that you created in Module 2.
 

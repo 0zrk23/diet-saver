@@ -7,63 +7,52 @@
   <title>My Menu</title>
   <link rel="stylesheet" href="/css/bulma.css">
   <link rel="stylesheet" href="/css/style.css">
+   <link rel="stylesheet" href="/css/carouselstyle.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.4/dist/css/bulma-carousel.min.css" />
   
   
 </head>
 
-<body>
-  <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-      <a class="navbar-item" href="/">
-        <img class="business-icon" src="">
-      </a>
+  <body>
+    <section class="hero">
+      <div class="hero-header flex-column">
+        <header>
+          <div class="navbar-menu mx-6" id="nav-links">
+            <nav class="navbar-start">
+            <a href="/" class="navbar-item">homepage</a>
+            </nav>
+            <img class="navbar-item is-horizontal-center mt-3 my-3" src="/img/my-menu-logo-02.png" alt="site logo">
+            <nav class="navbar-end">
+              <a href="/profile" class="navbar-item">my diet</a>
+              <a href="#" class="navbar-item">search</a>
+            
+              <!-- Conditionally render login or logout links -->
+              {{#if logged_in}}
+              <a class="navbar-item" href="/profile">profile</a> |
+              <button class="no-button navbar-item" id="logout">logout</button>
+              {{else}}
+              <a class="navbar-item" href="/login">login</a>
+              {{/if}}
 
-      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-      </a>
-    </div>
-
-    <div id="navbarBasicExample" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="/">
-          Home
-        </a>
-        <a class="navbar-item" href="/search">
-          Search
-        </a>
-
-        {{#if logged_in}}
-        <a class="navbar-item" href="/profile">
-          Profile
-        </a>
-        {{/if}}
-      </div>
-
-      <div class="navbar-end">
-        <div class="navbar-item">
-          <div class="buttons">
-            {{#if logged_in}}
-              <a class="button is-light" id="logout">
-                Log Out
-              </a>
-            {{else}}
-              <a href="/signup" class="button has-background-grey-light">
-                <strong>Sign up</strong>
-              </a>
-              <a href="/login" class="button is-light">
-                Log in
-              </a>
-            {{/if}}
+            </nav>
           </div>
-        </div>
-      </div>
-    </div>
-  </nav>  
-
-  {{{body}}}
-
+        </header>
+        <section class="hero is-fullheight">
+        <main class="container container-fluid mt-5">
+          <!-- Render the sub layout -->
+          {{{ body }}}
+        </main>
+        <footer>
+          <div class="has-text-centered b-4">
+            <p>
+              Created by <a href="https://github.com/0zrk23">Gustavo Carrillo</a>, 
+              <a href="https://github.com/kfarshchian">Kameron Farshchian</a> and 
+              <a href="https://github.com/TheKelsenator">Kelsey O'Kelley</a>.
+            </p>
+          </div>
+        </footer>
+        </section>
 
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
@@ -74,6 +63,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
       integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+ <script>
+        bulmaCarousel.attach('#slider', {
+            slidesToScroll: 1,
+            slidesToShow: 1,
+            infinite: true,
+            autoplay: true,
+        });
+    </script>
 </body>
 
 </html>
