@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { User, Recipe, Favorites } = require('../../models');
-const withAuth = require('../../utils/auth');
+// const withAuth = require('../../utils/userAuth');
 
 //Create New user
 router.post('/', async (req, res) => {
@@ -62,9 +62,9 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.get('/:id/favorites', /*withAuth,*/ async (req,res) => {
+router.get('/favorites', async (req,res) => {
   try {
-    const userData = await User.findByPk(req.params.id,{
+    const userData = await User.findByPk(req.session.user_id,{
       include: [{model: Recipe}]
     });
     const user = userData.get({plain: true});
@@ -77,51 +77,55 @@ router.get('/:id/favorites', /*withAuth,*/ async (req,res) => {
   }
 })
 
-router.post('/:id/favorites', /*withAuth,*/ async (req,res) => {
+router.post('/favorites', async (req,res) => {
   try {
-    // console.log(req.body)
-    const recipeData = await Recipe.findOrCreate({
-      where: {
-        label: req.body.label
-      },
-      defaults: {
-        ...req.body
-      }
-    })
-    // console.log(recipeData);
-    const recipe = recipeData[0].get({plain: true});
-    // console.log(recipe)
-    // console.log(recipe.id);
-    const favorited = await Favorites.findOne({
-      where: {
-        user_id: req.params.id,
-        recipe_id: recipe.id
-      }
-    });
-    // console.log(favorited);
-    if (favorited){
-      // console.log()
-      res.status(400).json({message: 'You have already favorited this'})
+    if(!withAuth(req)){
+      // console.log('here');
+      res.status(200).json({redirect: true});
       return;
     }
-    const newFavoriteData = await Favorites.create({
-      user_id: req.params.id,
-      recipe_id: recipe.id
-    });
-    const newFavorite = newFavoriteData.get({plain: true});
-    res.status(200).json({message: 'Success!', newFavorite});
+  //   const recipeData = await Recipe.findOrCreate({
+  //     where: {
+  //       label: req.body.label
+  //     },
+  //     defaults: {
+  //       ...req.body
+  //     }
+  //   })
+  //   // console.log(recipeData);
+  //   const recipe = recipeData[0].get({plain: true});
+  //   // console.log(recipe)
+  //   // console.log(recipe.id);
+  //   const favorited = await Favorites.findOne({
+  //     where: {
+  //       user_id: req.session.user_id,
+  //       recipe_id: recipe.id
+  //     }
+  //   });
+  //   // console.log(favorited);
+  //   if (favorited){
+  //     // console.log()
+  //     res.status(400).json({message: 'You have already favorited this'})
+  //     return;
+  //   }
+  //   const newFavoriteData = await Favorites.create({
+  //     user_id: req.session.user_id,
+  //     recipe_id: recipe.id
+  //   });
+  //   const newFavorite = newFavoriteData.get({plain: true});
+  //   res.status(200).json({message: 'Success!'/*, newFavorite*/});
   } catch (err) {
     console.log(err);
     res.status(200).json(err);
   }
 })
 
-router.delete('/:id/favorites', /*withAuth,*/ async (req,res) => {
+router.delete('/favorites', async (req,res) => {
   try {
     console.log(req.body.recipe_id);
     const favorited = await Favorites.findOne({
       where: {
-        user_id: req.params.id,
+        user_id: req.session.user_id,
         recipe_id: req.body.recipe_id
       }
     });
@@ -133,7 +137,7 @@ router.delete('/:id/favorites', /*withAuth,*/ async (req,res) => {
     }
     const deletedFavorite = await Favorites.destroy({
       where: {
-        user_id: req.params.id,
+        user_id: req.session.user_id,
         recipe_id: req.body.recipe_id
       }
     })
@@ -144,5 +148,13 @@ router.delete('/:id/favorites', /*withAuth,*/ async (req,res) => {
     res.status(500).json(err);
   }
 });
+
+function withAuth(req){
+  if(!req.session.logged_in){
+    return false;
+  }
+  return true;
+}
+
 
 module.exports = router;

@@ -57,18 +57,22 @@ router.get('/popular', async (req,res) => {
     // const [recipeIds, idData] = await sequelize.query('SELECT id FROM recipe');
     // // console.log(recipeIds);
     // const [favoriteRecipeIds, repIdData] = await sequelize.query('SELECT recipe_id FROM favorite');
-    // // console.log(favoriteRecipeIds);
-    // const recipeData = await Recipe.findAll({
-    //   attributes: {
-    //     include: [
-    //       sequelize.literal(`(
-    //         SELECT COUNT(*) FROM favorite WHERE favorite.recipe_id = recipe.id
-    //       )`),
-    //       'favorite_count'
-    //     ]
-    //   }
-    // })
-    console.log(recipeData);
+    // console.log(favoriteRecipeIds);
+    const recipeData = await Recipe.findAll({
+      include: [{model: Favorites}],
+      // attributes: {
+      //   include: [
+      //     [
+      //       sequelize.literal(`(
+      //         SELECT COUNT(*) FROM favorite WHERE favorite.recipe_id = recipe.id
+      //       )`),
+      //       'favorites',
+      //     ]
+      //   ]
+      // }
+    })
+    const recipies = recipeData.map(recipe => recipe.get({plain: true}))
+    console.log(recipies.favorites);
     res.status(200).json({message: "Success!"});
   } catch (err) {
     console.log(err);
