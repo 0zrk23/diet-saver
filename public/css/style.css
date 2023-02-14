@@ -1,0 +1,41 @@
+:root { 
+  --darkblue: #344859; 
+  --lighterblue: #4C6473; 
+  --seafoam: #94A6A6; 
+  --lightgreen: #B5BFAA; 
+  --lightest: #D5D9D0;
+}
+
+body {
+  color: #4C6473;
+  background-color: #B5BFAA;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  text-decoration: none;
+  color: #D5D9D0;
+  background-color: #35495a;
+}
+
+.navbar-item {
+  font-size: 24px;
+  color: #D5D9D0;
+  text-decoration: none;
+}
+
+.navbar-item:hover {
+  background: #35495A !important;
+  text-decoration: none;
+}
+
+footer {
+  margin-bottom: 0px;
+  color: #D5D9D0;
+  background-color: #B5BFAA;
+
+}
+
+
