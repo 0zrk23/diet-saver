@@ -60,7 +60,7 @@ submitButton.addEventListener('click', async function(event) {
     hits.forEach(hit => {
         const recipeData = hit.recipe;
         const recipe = {};
-        recipe.calories = recipeData.calories,
+        recipe.calories = Math.round(recipeData.calories),
         recipe.cuisine_type = recipeData.cuisineType,
         recipe.health_labels = recipeData.healthLabels,
         recipe.image = recipeData.image,
@@ -156,11 +156,13 @@ const recipeFavoriteFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' }
         })
 
+        if(response.redirected){
+            document.location.replace('/login')
+            return;
+        }
+
         if(response.ok){
-            if(response.redirect){
-                document.location.replace('/login')
-                return;
-            }
+            
         } else {
             alert(response.statusText)
         }
