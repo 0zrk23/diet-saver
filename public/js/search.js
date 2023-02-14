@@ -146,7 +146,7 @@ const recipeFavoriteFormHandler = async (event) => {
     if(event.target.getAttribute('btn-id')){
         // alert('here');
         // const label = event.target
-        $(event.target).hide();
+        // $(event.target).hide();
         const recipe_index = event.target.getAttribute('btn-id');
         const recipe = JSON.parse(localStorage.getItem('search_results'))[recipe_index];
         // console.log(recipe);
@@ -155,6 +155,15 @@ const recipeFavoriteFormHandler = async (event) => {
             body: JSON.stringify(recipe),
             headers: { 'Content-Type': 'application/json' }
         })
+
+        if(response.ok){
+            if(response.redirect){
+                document.location.replace('/login')
+                return;
+            }
+        } else {
+            alert(response.statusText)
+        }
         // console.log(response);
     }
 
