@@ -85,6 +85,7 @@ router.post('/favorites', async (req,res) => {
       res.status(200);
       return;
     }
+    console.log('here');
   //   const recipeData = await Recipe.findOrCreate({
   //     where: {
   //       label: req.body.label
@@ -114,7 +115,7 @@ router.post('/favorites', async (req,res) => {
   //     recipe_id: recipe.id
   //   });
   //   const newFavorite = newFavoriteData.get({plain: true});
-  //   res.status(200).json({message: 'Success!'/*, newFavorite*/});
+    res.status(200).json({message: 'Success!'/*, newFavorite*/});
   } catch (err) {
     console.log(err);
     res.status(200).json(err);
