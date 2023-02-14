@@ -13,7 +13,7 @@ const imageSize = 1;
 
 submitButton.addEventListener('click', function(event) {
     event.preventDefault();
-    $('.card').remove();
+    $('.columns').remove();
 });
 
 
@@ -88,36 +88,38 @@ submitButton.addEventListener('click', async function(event) {
     
 const generateRecipe = function (newRecipes, i) {
     return `
-    <div class="card" id="allCard">
-        <div class="body">
-            <div class="card-header-title">
-                <p>
-                    Title: <span id="label">${newRecipes[i].label}</span>
+    <div class="columns" id="allCard">
+        <div class="column body" id="inner-card">
+             <div class="columns card-header-title">
+                <img class="thumbnail"src="${newRecipes[i].image}" />
+                <p class="column">
+                    Recipe: <span id="label">${newRecipes[i].label}</span>
                 </p>
-                <p>
+                <p class="column">
                     Calories: <span id="calories">${Math.round(newRecipes[i].calories)}</span>
                 </p>
-                <p>
+                <p class="column">
                     Cuisine type: <span id="cuisine-type">${newRecipes[i].cuisine_type}</span>
                 </p>
-                <p>
-                    Health Label: <span id="health-labels">${newRecipes[i].health_labels}</span>
-                </p>
-                <p>
-                    Ingredients: <span id="ingredients">${newRecipes[i].ingredients}</span>
-                </p>
-                <p>
-                    Meal Type: <span id="meal-type>"${newRecipes[i].meal_type}</span>
-                </p>
-                <p>
-                    Link to Recipe: <span id="url">${newRecipes[i].url}</span>
-                </p>
-                <p>
+                <p class="column">
                     Servings: <span id="yield">${newRecipes[i].yield}</span>
                 </p>
-                <img src="${newRecipes[i].image}" />
+                <p class="column">
+                    Meal Type: <span id="meal-type>">${newRecipes[i].meal_type}</span>
+                </p>
             </div>
-            <div class="save-form">
+            <div class="columns card-header-title">
+                <p class="column">
+                    Health Label: <span class="scroll" id="health-labels">${newRecipes[i].health_labels}</span>
+                </p>
+                <p class="column">
+                    Ingredients: <span class="scroll"id="ingredients">${newRecipes[i].ingredients}</span>
+                </p>
+                <p class="column">
+                    Link to Recipe: <span id="url">${newRecipes[i].url}</span>
+                </p>
+            </div>
+            <div class="save-form" id="savebtn">
                 <button class="button is-primary" btn-id="${i}" type="save">Save</button>
             </div>
         </div>
