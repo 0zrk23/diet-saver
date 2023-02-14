@@ -81,7 +81,8 @@ router.post('/favorites', async (req,res) => {
   try {
     if(!withAuth(req)){
       // console.log('here');
-      res.status(200).json({redirect: true});
+      res.redirect('/login');
+      res.status(200);
       return;
     }
   //   const recipeData = await Recipe.findOrCreate({

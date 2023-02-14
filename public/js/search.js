@@ -156,11 +156,15 @@ const recipeFavoriteFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' }
         })
 
+        console.log(response.message)
+
+        if(response.redirected){
+            document.location.replace('/login')
+            return;
+        }
+
         if(response.ok){
-            if(response.redirect){
-                document.location.replace('/login')
-                return;
-            }
+            
         } else {
             alert(response.statusText)
         }

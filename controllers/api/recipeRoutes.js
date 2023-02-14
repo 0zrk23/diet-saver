@@ -3,6 +3,19 @@ const { Recipe, Favorites } = require('../../models');
 const withAuth = require('../../utils/auth');
 const fs = require('fs');
 const sequelize = require('../../config/connection');
+const mysql = require('mysql2');
+
+const db = mysql.createConnection(
+  {
+    host: 'localhost',
+    // MySQL username,
+    user: process.env.DB_USER,
+    // MySQL password
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
+  },
+  console.log(`Connected to the books_db database.`)
+).promise();
 
 router.post('/create_seeds', async (req, res) => {
   try {
@@ -54,25 +67,16 @@ router.post('/create_seeds', async (req, res) => {
 router.get('/popular', async (req,res) => {
   // 
   try {
-    // const [recipeIds, idData] = await sequelize.query('SELECT id FROM recipe');
-    // // console.log(recipeIds);
-    // const [favoriteRecipeIds, repIdData] = await sequelize.query('SELECT recipe_id FROM favorite');
-    // console.log(favoriteRecipeIds);
-    const recipeData = await Recipe.findAll({
-      // include: [{model: Favorites}],
-      attributes: {
-        include: [
-          [
-            sequelize.literal(`(
-              SELECT COUNT(*) FROM favorite WHERE favorite.recipe_id = recipe.id
-            )`)
-          ]
-        ]
-      }
-    })
-    const recipies = recipeData.map(recipe => recipe.get({plain: true}))
-    console.log(recipies.favorites);
-    res.status(200).json({message: "Success!"});
+    const [favorites,favoriteMetadata] = await db.query('SELECT recipe_id, COUNT(*) AS "favorites" FROM diet_db.favorite GROUP BY recipe_id ORDER BY favorites DESC LIMIT 5')
+    const favoriteRecipies = [];
+    for(let i = 0; i < favorites.length; i++){
+      const recipeId = favorites[i].recipe_id
+      const recipe = await Recipe.findByPk(recipeId);
+      // console.log(recipe.get({plain:true}));
+      favoriteRecipies.push(recipe);
+    }
+    // console.log(favoriteRecipies);
+    res.status(200).json({message: "Success!", favorites: favoriteRecipies});
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
