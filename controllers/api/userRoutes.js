@@ -62,9 +62,9 @@ router.post('/logout', (req, res) => {
   }
 });
 
-router.get('/:id/favorites', /*withAuth,*/ async (req,res) => {
+router.get('/favorites', withAuth, async (req,res) => {
   try {
-    const userData = await User.findByPk(req.params.id,{
+    const userData = await User.findByPk(req.session.user_id,{
       include: [{model: Recipe}]
     });
     const user = userData.get({plain: true});
@@ -77,7 +77,7 @@ router.get('/:id/favorites', /*withAuth,*/ async (req,res) => {
   }
 })
 
-router.post('/:id/favorites', /*withAuth,*/ async (req,res) => {
+router.post('/favorites', withAuth, async (req,res) => {
   try {
     // console.log(req.body)
     const recipeData = await Recipe.findOrCreate({
@@ -94,7 +94,7 @@ router.post('/:id/favorites', /*withAuth,*/ async (req,res) => {
     // console.log(recipe.id);
     const favorited = await Favorites.findOne({
       where: {
-        user_id: req.params.id,
+        user_id: req.session.user_id,
         recipe_id: recipe.id
       }
     });
@@ -105,7 +105,7 @@ router.post('/:id/favorites', /*withAuth,*/ async (req,res) => {
       return;
     }
     const newFavoriteData = await Favorites.create({
-      user_id: req.params.id,
+      user_id: req.session.user_id,
       recipe_id: recipe.id
     });
     const newFavorite = newFavoriteData.get({plain: true});
@@ -116,12 +116,12 @@ router.post('/:id/favorites', /*withAuth,*/ async (req,res) => {
   }
 })
 
-router.delete('/:id/favorites', /*withAuth,*/ async (req,res) => {
+router.delete('/favorites', withAuth, async (req,res) => {
   try {
     console.log(req.body.recipe_id);
     const favorited = await Favorites.findOne({
       where: {
-        user_id: req.params.id,
+        user_id: req.session.user_id,
         recipe_id: req.body.recipe_id
       }
     });
@@ -133,7 +133,7 @@ router.delete('/:id/favorites', /*withAuth,*/ async (req,res) => {
     }
     const deletedFavorite = await Favorites.destroy({
       where: {
-        user_id: req.params.id,
+        user_id: req.session.user_id,
         recipe_id: req.body.recipe_id
       }
     })
@@ -144,5 +144,6 @@ router.delete('/:id/favorites', /*withAuth,*/ async (req,res) => {
     res.status(500).json(err);
   }
 });
+
 
 module.exports = router;

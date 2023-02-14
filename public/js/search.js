@@ -53,7 +53,7 @@ submitButton.addEventListener('click', async function(event) {
     const apiResponse = await (await (fetch(apiURL.join('')))).json();
     const hits = apiResponse.hits;
 
-    console.log(hits);
+    // console.log(hits);
 
     const recipies = [];
     //loop through array and descructure array 
@@ -71,44 +71,96 @@ submitButton.addEventListener('click', async function(event) {
         recipe.yield = recipeData.yield
         recipies.push(recipe);
     });
-    // console.log(recipies)
+    console.log(recipies)
+    // console.log(recipies[0].)
 
-    
+    // console.log(JSON.stringify(recipies));
+
+    localStorage.setItem("search_results", JSON.stringify(recipies));
+
     generateHTML(recipies);
-    });
+
+    // await fetch('/search',{
+    //     method: 'GET',
+    //     headers: { 'Content-Type': 'application/json' }
+    // })
+});
     
-    const generateRecipe = function (newRecipes, i) {
-        return `
-        <div class="card" id="allCard">
-            <div class="body">
-                <div class="card-header-title">
-                Title: ${newRecipes[i].label} </br>
-                ${newRecipes[i].calories} </br>
-                Cuisine type: ${newRecipes[i].cuisineType}</br>
-                Health Label: ${newRecipes[i].healthLabels}</br>
-                Ingredients: ${newRecipes[i].ingredients}/br>
-                Meal Type: ${newRecipes[i].mealType}</br>
-                URL: ${newRecipes[i].url}</br>
-                Yield: ${newRecipes[i].yield}</br>
-                Image: <img src="${newRecipes[i].image}" /></br>
-                </div>
-                <button class="button is-primary" type="save">Save</button>
+const generateRecipe = function (newRecipes, i) {
+    return `
+    <div class="card" id="allCard">
+        <div class="body">
+            <div class="card-header-title">
+                <p>
+                    Title: <span id="label">${newRecipes[i].label}</span>
+                </p>
+                <p>
+                    Calories: <span id="calories">${Math.round(newRecipes[i].calories)}</span>
+                </p>
+                <p>
+                    Cuisine type: <span id="cuisine-type">${newRecipes[i].cuisine_type}</span>
+                </p>
+                <p>
+                    Health Label: <span id="health-labels">${newRecipes[i].health_labels}</span>
+                </p>
+                <p>
+                    Ingredients: <span id="ingredients">${newRecipes[i].ingredients}</span>
+                </p>
+                <p>
+                    Meal Type: <span id="meal-type>"${newRecipes[i].meal_type}</span>
+                </p>
+                <p>
+                    Link to Recipe: <span id="url">${newRecipes[i].url}</span>
+                </p>
+                <p>
+                    Servings: <span id="yield">${newRecipes[i].yield}</span>
+                </p>
+                <img src="${newRecipes[i].image}" />
+            </div>
+            <div class="save-form">
+                <button class="button is-primary" btn-id="${i}" type="save">Save</button>
             </div>
         </div>
-        `;
+    </div>
+    `;
+}
+
+generateHTML = (recipies) => {
+    // console.log(recipies[0].label);
+    let allRecipes = []; 
+    
+    for (let i = 0; i < recipies.length; i++) {
+        const newRecipes = recipies;
+        const recipeHtml = generateRecipe(newRecipes, i);
+        allRecipes.push(recipeHtml);
+    }
+    $('#results-container').append(allRecipes)
+    // console.log(allRecipes);
+}
+
+const recipeFavoriteFormHandler = async (event) => {
+    event.preventDefault();
+    // alert('here');
+    // alert(JSON.stringify(event.target.getAttribute('class')));
+    // console.log(event.target.getAttribute('class'));
+    if(event.target.getAttribute('btn-id')){
+        // alert('here');
+        // const label = event.target
+        $(event.target).hide();
+        const recipe_index = event.target.getAttribute('btn-id');
+        const recipe = JSON.parse(localStorage.getItem('search_results'))[recipe_index];
+        // console.log(recipe);
+        const response = await fetch('/api/users/favorites',{
+            method: 'POST',
+            body: JSON.stringify(recipe),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        // console.log(response);
     }
 
-    generateHTML = (recipies) => {
-        console.log(recipies[0].label);
-        let allRecipes = []; 
-        
-        for (let i = 0; i < recipies.length; i++) {
-            const newRecipes = recipies;
-            const recipeHtml = generateRecipe(newRecipes, i);
-            allRecipes.push(recipeHtml);
-    }
-    $('#showRecipe').append(allRecipes)
-    console.log(allRecipes);
-    }
+}
 
+document
+    .querySelector('#results-container')
+    .addEventListener('click',recipeFavoriteFormHandler);
 
