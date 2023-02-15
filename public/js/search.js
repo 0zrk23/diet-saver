@@ -113,7 +113,7 @@ const generateRecipe = function (newRecipes, i) {
                     Health Label: <span class="scroll" id="health-labels">${newRecipes[i].health_labels}</span>
                 </p>
                 <p class="column">
-                    Ingredients: <span class="scroll"id="ingredients">${newRecipes[i].ingredients}</span>
+                    Ingredients: <span class="scroll" id="ingredients">${newRecipes[i].ingredients}</span>
                 </p>
                 <p class="column">
                     Link to Recipe: <span id="url">${newRecipes[i].url}</span>
