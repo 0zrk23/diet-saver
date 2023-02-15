@@ -88,7 +88,8 @@ router.post('/favorites', async (req,res) => {
     // console.log(req.body);
     const recipeData = await Recipe.findOrCreate({
       where: {
-        label: req.body.label
+        label: req.body.label,
+        calories: req.body.calories
       },
       defaults: {
         ...req.body
@@ -104,7 +105,7 @@ router.post('/favorites', async (req,res) => {
         recipe_id: recipe.id
       }
     });
-    console.log(favorited);
+    // console.log(favorited);
     if (favorited){
       // console.log()
       res.status(400).json({message: 'You have already favorited this'})
@@ -115,7 +116,7 @@ router.post('/favorites', async (req,res) => {
       recipe_id: recipe.id
     });
     const newFavorite = newFavoriteData.get({plain: true});
-    console.log(newFavorite);
+    // console.log(newFavorite);
     res.status(200).json({message: 'Success!' , newFavorite});
   } catch (err) {
     console.log(err);
