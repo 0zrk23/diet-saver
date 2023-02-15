@@ -173,3 +173,8 @@ p {
 float: right;
 bottom: 65px;
 }
+#deletebtn{
+  position: relative;
+float: right;
+bottom: 75px;
+}
