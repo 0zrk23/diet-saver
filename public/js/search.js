@@ -105,7 +105,7 @@ const generateRecipe = function (newRecipes, i) {
                     Servings: <span id="yield">${newRecipes[i].yield}</span>
                 </p>
                 <p class="column">
-                    Meal Type: <span id="meal-type>">${newRecipes[i].meal_type}</span>
+                    Meal Type: <span id="meal-type">${newRecipes[i].meal_type}</span>
                 </p>
             </div>
             <div class="columns card-header-title">
@@ -148,7 +148,7 @@ const recipeFavoriteFormHandler = async (event) => {
     if(event.target.getAttribute('btn-id')){
         // alert('here');
         // const label = event.target
-        // $(event.target).hide();
+        $(event.target).hide();
         const recipe_index = event.target.getAttribute('btn-id');
         const recipe = JSON.parse(localStorage.getItem('search_results'))[recipe_index];
         // console.log(recipe);
@@ -158,6 +158,7 @@ const recipeFavoriteFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' }
         })
 
+        console.log(response);
         if(response.redirected){
             document.location.replace('/login')
             return;
@@ -166,7 +167,7 @@ const recipeFavoriteFormHandler = async (event) => {
         if(response.ok){
             
         } else {
-            alert(response.statusText)
+            alert('You already have this saved')
         }
         // console.log(response);
     }

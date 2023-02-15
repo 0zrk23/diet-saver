@@ -9,6 +9,53 @@
 </div>
 
 </section>
+<div class="favorites-container">
+  
+{{#each recipies as |recpie|}}
+
+  <div class="columns" id="allCard">
+      <div class="column body" id="inner-card">
+            <div class="columns card-header-title">
+              <img class="thumbnail" src={{image}} />
+              <p class="column">
+                  Recipe: <span id="label">{{lable}}</span>
+              </p>
+              <p class="column">
+                  Calories: <span id="calories">{{calories}}</span>
+              </p>
+              <p class="column">
+                  Cuisine type: <span id="cuisine-type">{{cuisine_type}}</span>
+              </p>
+              <p class="column">
+                  Servings: <span id="yield">{{yield}}</span>
+              </p>
+              <p class="column">
+                  Meal Type: <span id="meal-type">{{meal_type}}</span>
+              </p>
+          </div>
+          <div class="columns card-header-title">
+              <p class="column">
+                  Health Label: <span class="scroll" id="health-labels">{{health_labels}}</span>
+              </p>
+              <p class="column">
+                  Ingredients: <span class="scroll"id="ingredients">{{ingredients}}</span>
+              </p>
+              <p class="column">
+                  Link to Recipe: <span id="url">{{url}}</span>
+              </p>
+          </div>
+          <form class="delete-form card-footer-item">
+              <button class="button is-danger is-outlined" favorite-id='{{id}}'>
+                  <span favorite-id='{{id}}'>Delete</span>
+                  <span class="icon is-small" favorite-id='{{id}}'>
+                      <i class="fas fa-times" favorite-id='{{id}}'></i>
+                  </span>
+              </button>
+          </form>
+      </div>
+  </div>
+{{/each}}
+</div>
 
 
 <script src="./js/profile.js"></script>
