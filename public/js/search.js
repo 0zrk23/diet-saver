@@ -105,7 +105,7 @@ const generateRecipe = function (newRecipes, i) {
                     Servings: <span id="yield">${newRecipes[i].yield}</span>
                 </p>
                 <p class="column">
-                    Meal Type: <span id="meal-type>">${newRecipes[i].meal_type}</span>
+                    Meal Type: <span id="meal-type">${newRecipes[i].meal_type}</span>
                 </p>
             </div>
             <div class="columns card-header-title">
