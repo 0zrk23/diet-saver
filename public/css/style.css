@@ -59,3 +59,117 @@ footer {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#allCard{
+  display: block;
+  border: 2px solid black;
+  height: 475px;
+  margin: 10px;
+  background-color: #D5D9D0;
+}
+#inner-card{
+  position: inherit;
+  top: 10px;
+  justify-content: center;
+  height: 300px;
+}
+span{
+  display: block;
+  justify-content: center;
+  max-height: 300px;
+  max-width: 200px;
+}
+p {
+    word-wrap: break-word;
+}
+.scroll {
+  float:right;
+  height: 250px;
+  width:250px;  
+  overflow-y: scroll;
+}
+.thumbnail{
+  height: 150px;
+  width: 150px;
+}
+/* .column{
+  border: 2px solid black; 
+  padding: 5px;
+} */
+#savebtn{
+  position: relative;
+float: right;
+bottom: 65px;
+}
