@@ -3,8 +3,6 @@
 const apiId = 'a4effe10';
 const apiKey = 'f944412b3011c0f498d615d4abf9bcf6';
 let submitButton = document.getElementById("search");
-let htmlpassin = document.getElementById('#showRecipe');
-const removeCard = document.getElementById("#allCard");
 
 const imageSize = 1;
 
