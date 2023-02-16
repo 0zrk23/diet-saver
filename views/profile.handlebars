@@ -1,24 +1,21 @@
 <section>
 <div class="row" id="welcome">
-  <div class="col-auto">
-    <h2 class="is-size-3">Welcome, {{username}}!</h2>
-  </div>
+    <div class="col-auto">
+        <h2 class="is-size-3">Welcome!</h2>
+    </div>
+    <p class="is-size-4">A delicious collection of of your favorite recipes. </p>
 </div>
-<div class="row" id="favorite-recipe">
-<p class="is-size-4">A delicious collection of of your favorite recipes. </p>
-</div>
-
 </section>
 <div class="favorites-container">
   
 {{#each recipies as |recpie|}}
 
-  <div class="columns" id="allCard">
+  <div class="columns" id="profile-card">
       <div class="column body" id="inner-card">
             <div class="columns card-header-title">
               <img class="thumbnail" src={{image}} />
               <p class="column">
-                  Recipe: <span id="label">{{lable}}</span>
+                  Recipe: <span id="label">{{label}}</span>
               </p>
               <p class="column">
                   Calories: <span id="calories">{{calories}}</span>
@@ -34,11 +31,11 @@
               </p>
           </div>
           <div class="columns card-header-title">
-              <p class="column">
+              <p class="column" id="health-labels">
                   Health Label: <span class="scroll" id="health-labels">{{health_labels}}</span>
               </p>
-              <p class="column">
-                  Ingredients: <span class="scroll"id="ingredients">{{ingredients}}</span>
+              <p class="column" id="ingredients">
+                  Ingredients: <span class="scroll" id="ingredients">{{ingredients}}</span>
               </p>
               <p class="column">
                   Link to Recipe: <span id="url">{{url}}</span>

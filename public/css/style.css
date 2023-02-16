@@ -83,6 +83,14 @@ footer {
   display: block;
   border: 2px solid black;
   height: 475px;
+  width: 90%;
+  margin: 10px;
+  background-color: #D5D9D0;
+}
+#profile-card{
+  display: block;
+  border: 2px solid black;
+  height: 475px;
   margin: 10px;
   background-color: #D5D9D0;
 }
@@ -127,9 +135,7 @@ bottom: 75px;
 left: 600px;
 }
 
-
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (min-width: 769px) and (max-width: 1023px) {
   #nav-links {
     display: flex;
     justify-content: stretch auto;
@@ -137,9 +143,87 @@ left: 600px;
     text-decoration: none;
     border: none;
   }
+  #form{
+    display: inline-block;
+    position: relative;
+    width: 60%;
+    left: 5%; 
+  }
+  #allCard.columns{
+    display: inline-block;
+    position: relative;
+    left: 10%; 
+    border: 2px solid black;
+    height: 475px;
+    width: 50%;
+    margin: 10px;
+    background-color: #D5D9D0;
+    justify-content: center;
+  }
+  #allCard{
+    display: block;
+    border: 2px solid black;
+    height: 475px;
+    width: 75%;
+    margin: 10px;
+    background-color: #D5D9D0;
+  }
+  #inner-card{
+    position: inherit;
+    top: 10px;
+    width: 75%;
+    justify-content: center;
+    height: 300px;
+  }
+  span{
+    display: block;
+    justify-content: center;
+    /* max-height: 300px;
+    max-width: 200px; */
+  }
+  #url {
+      word-wrap: break-word;
+      width: 45%;
+  }
+  .scroll {
+    float:right;
+    height: 250px;
+    width:250px;  
+    overflow-y: scroll;
+  }
+  .thumbnail{
+    height: 150px;
+    width: 150px;
+  }
+  /* .column{
+    border: 2px solid black; 
+    padding: 5px;
+  } */
+  #savebtn{
+    position: relative;
+  float: right;
+  bottom: 95px;
+  left: 150px;
+  }
+  .deleteBTN{
+    float: right;
+  padding: 10px;
+  left: 435px;
+  bottom: 100px;
+  }
+  .favorites-container{
+    display: grid;
+	place-items: center;
+  }
+  #welcome{
+    display: grid;
+    place-items: center;
+  }
+  #profile-card{
+    width: 80%;
+    
+  }
 }
-
-/* iPads, Tablets */
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
   #nav-links {
@@ -153,16 +237,190 @@ left: 600px;
   .navbar-item {
     font-size: 16px;
   }
-
+  #form{
+    display: inline-block;
+    position: relative;
+    width: 40%;
+  }
+  #allCard.columns{
+    display: inline-block;
+    position: relative;
+    border: 2px solid black;
+    height: 475px;
+    width: 80%;
+    margin: 10px;
+    background-color: #D5D9D0;
+    justify-content: center;
+  }
+  #allCard{
+    display: inline-block;
+    border: 2px solid black;
+    height: 475px;
+    width: 80%;
+    margin: 10px;
+    background-color: #D5D9D0;
+  }
+  .card-header-title {
+   
+}
+  #inner-card{
+    position: inherit;
+    top: 10px;
+    width: 75%;
+    justify-content: center;
+    height: 300px;
+  }
+  span{
+    display: block;
+    justify-content: center;
+    /* max-height: 300px;
+    max-width: 200px; */
+  }
+  #health-labels{
+    display: none;
+  }
+  #ingredients{
+    display: none;
+  }
+  #url {
+      word-wrap: break-word;
+      width: 45%;
+  }
+  .scroll {
+    float:right;
+    height: 250px;
+    width:250px;  
+    overflow-y: scroll;
+  }
+  .thumbnail{
+    height: 150px;
+    width: 150px;
+  }
+  /* .column{
+    border: 2px solid black; 
+    padding: 5px;
+  } */
+  #savebtn{
+    position: relative;
+  float: right;
+  bottom: 95px;
+  left: 150px;
+  }
+  .deleteBTN{
+    float: right;
+  padding: 10px;
+  left: 300px;
+  top: 45px;
+  }
+  /* .favorites-container{
+    display: grid;
+	place-items: center;
+  } */
+  #welcome{
+    display: grid;
+    place-items: center;
+  }
 }
 
 /* Small Screens, Laptops */
 
-@media screen and (min-width: 769px) and (max-width: 1023px) {
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
   #nav-links {
     display: flex;
     justify-content: stretch auto;
     background: #35495A !important;
     text-decoration: none;
     border: none;
+    width: 100%;
   }
+  #form{
+    display: inline-block;
+    position: relative;
+    width: 30%;
+  }
+  #allCard.columns{
+    display: flex;
+    position: relative;
+    border: 2px solid black;
+    height: 600px;
+    width: 40%;
+    margin: 10px;
+    background-color: #D5D9D0;
+    justify-content: center;
+  }
+  #allCard{
+    display: inline-block;
+    border: 2px solid black;
+    height: 60px;
+    width: 30%;
+    margin: 10px;
+    background-color: #D5D9D0;
+  }
+  .card-header-title {
+    flex-wrap: wrap;
+}
+  #inner-card{
+    position: inherit;
+    top: 10px;
+    width: 75%;
+    justify-content: center;
+    height: 300px;
+  }
+  span{
+    display: block;
+    justify-content: center;
+    /* max-height: 300px;
+    max-width: 200px; */
+  }
+  #health-labels{
+    display: none;
+  }
+  #ingredients{
+    display: none;
+  }
+  #url {
+      word-wrap: break-word;
+      width: 45%;
+  }
+  .scroll {
+    float:right;
+    height: 250px;
+    width:250px;  
+    overflow-y: scroll;
+  }
+  .thumbnail{
+    height: 150px;
+    width: 150px;
+  }
+  /* .column{
+    border: 2px solid black; 
+    padding: 5px;
+  } */
+  #savebtn{
+    position: relative;
+  float: right;
+  bottom: 25px;
+  right: 0px;
+  }
+  .deleteBTN{
+    float: right;
+  padding: 10px;
+  left: 163px;
+  bottom: 30px;
+  }
+  /* .favorites-container{
+    display: grid;
+	place-items: center;
+  } */
+  #welcome{
+    display: grid;
+    place-items: left;
+    flex-wrap: wrap;
+  }
+  #profile-card{
+    width: 70%;
+    height: 650px;
+  }
+}
