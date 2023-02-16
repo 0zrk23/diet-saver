@@ -26,9 +26,11 @@ header {
   text-decoration: none;
 }
 
-.navbar-item:hover {
+.navbar-item:hover,
+#logout {
   background: #35495A !important;
   text-decoration: none;
+  border: none;
 }
 
 #carousel-container {
