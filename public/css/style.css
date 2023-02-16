@@ -129,6 +129,11 @@ left: 600px;
     text-decoration: none;
     border: none;
   }
+
+  #carousel{
+    height: 200px;
+    width: 400px;
+  }
 }
 
 /* iPads, Tablets */
@@ -146,6 +151,10 @@ left: 600px;
     font-size: 16px;
   }
 
+  #carousel{
+    height: 200;
+    width: 1%;
+  }
 }
 
 /* Small Screens, Laptops */
@@ -157,6 +166,11 @@ left: 600px;
     background: #35495A !important;
     text-decoration: none;
     border: none;
+  }
+
+  #carousel{
+    height: 400px;
+    width: 800px;
   }
 
 }
