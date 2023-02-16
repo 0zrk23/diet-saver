@@ -1,6 +1,6 @@
 #!/bin/bash
 echo 'logging into db root as techblog'
-mysql -u root --password="C@rri11o"  << EOF
+mysql -u root --password="Buckingham1429"  << EOF
 SOURCE db/schema.sql;
 quit
 EOF

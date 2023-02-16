@@ -45,6 +45,11 @@ header {
   text-decoration: none;
   background: #D5D9D0 !important;
 }
+#logout {
+  background: #35495A !important;
+  text-decoration: none;
+  border: none;
+}
 
 #carousel-container {
   display: flex;
@@ -72,80 +77,6 @@ footer {
   color: #D5D9D0;
   background-color: #B5BFAA;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #allCard{
   display: block;
