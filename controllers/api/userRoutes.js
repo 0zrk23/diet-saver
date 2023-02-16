@@ -127,7 +127,7 @@ router.post('/favorites', async (req,res) => {
 
 router.delete('/favorites', async (req,res) => {
   try {
-    console.log(req.body.recipe_id);
+    // console.log(req.body.recipe_id);
     const favorited = await Favorites.findOne({
       where: {
         user_id: req.session.user_id,
