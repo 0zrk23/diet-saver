@@ -105,11 +105,11 @@ const generateRecipe = function (newRecipes, i) {
                     Meal Type: <span id="meal-type">${newRecipes[i].meal_type}</span>
                 </p>
             </div>
-            <div class="columns card-header-title">
-                <p class="column">
+            <div class="columns card-header-title" id="inner-card>
+                <p class="column" id="health-labels">
                     Health Label: <span class="scroll" id="health-labels">${newRecipes[i].health_labels}</span>
                 </p>
-                <p class="column">
+                <p class="column" id="ingredients">
                     Ingredients: <span class="scroll" id="ingredients">${newRecipes[i].ingredients}</span>
                 </p>
                 <p class="column">
