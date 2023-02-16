@@ -25,19 +25,31 @@ header {
   color: #D5D9D0;
   text-decoration: none;
 }
-
 #site-logo {
   display: flex;
   justify-content: center;
   width: 70%;
   height: auto;
 }
-
-.navbar-item:hover,
-#logout {
-  background: #35495A !important;
+#logout{
+  font-size: 24px;
+  color: #D5D9D0;
   text-decoration: none;
+  background: #35495A;
   border: none;
+  cursor: pointer;
+}
+#logout:hover{
+  font-size: 24px;
+  color: #35495A;
+  text-decoration: none;
+  background: #D5D9D0 !important;
+}
+.navbar-item:hover {
+  font-size: 24px;
+  color: #35495A;
+  text-decoration: none;
+  background: #D5D9D0 !important;
 }
 
 #carousel-container {
@@ -117,10 +129,6 @@ left: 600px;
 
 
 
-
-
-/* Mobile Devices */
-
 @media screen and (min-width: 320px) and (max-width: 480px) {
   #nav-links {
     display: flex;
@@ -158,5 +166,3 @@ left: 600px;
     text-decoration: none;
     border: none;
   }
-
-}
