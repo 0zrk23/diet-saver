@@ -25,10 +25,25 @@ header {
   color: #D5D9D0;
   text-decoration: none;
 }
-
-.navbar-item:hover {
-  background: #35495A !important;
+#logout{
+  font-size: 24px;
+  color: #D5D9D0;
   text-decoration: none;
+  background: #35495A;
+  border: none;
+  cursor: pointer;
+}
+#logout:hover{
+  font-size: 24px;
+  color: #35495A;
+  text-decoration: none;
+  background: #D5D9D0 !important;
+}
+.navbar-item:hover {
+  font-size: 24px;
+  color: #35495A;
+  text-decoration: none;
+  background: #D5D9D0 !important;
 }
 
 #carousel-container {
