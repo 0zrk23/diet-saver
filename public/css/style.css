@@ -223,6 +223,10 @@ left: 600px;
     width: 80%;
     
   }
+  #carousel{
+    height: 200px;
+    width: 400px;
+  }
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -262,7 +266,7 @@ left: 600px;
   }
   .card-header-title {
    
-}
+  }
   #inner-card{
     position: inherit;
     top: 10px;
@@ -319,6 +323,10 @@ left: 600px;
   #welcome{
     display: grid;
     place-items: center;
+  }
+  #carousel{
+    height: 200;
+    width: 1%;
   }
 }
 
@@ -422,5 +430,9 @@ left: 600px;
   #profile-card{
     width: 70%;
     height: 650px;
+  }
+  #carousel{
+    height: 400px;
+    width: 800px;
   }
 }
