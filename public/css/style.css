@@ -26,6 +26,13 @@ header {
   text-decoration: none;
 }
 
+#site-logo {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  height: auto;
+}
+
 .navbar-item:hover,
 #logout {
   background: #35495A !important;
@@ -106,4 +113,50 @@ bottom: 65px;
 padding: 10px;
 bottom: 75px;
 left: 600px;
+}
+
+
+
+
+
+/* Mobile Devices */
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  #nav-links {
+    display: flex;
+    justify-content: stretch auto;
+    background: #35495A !important;
+    text-decoration: none;
+    border: none;
+  }
+}
+
+/* iPads, Tablets */
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #nav-links {
+    display: flex;
+    justify-content: stretch auto;
+    background: #35495A !important;
+    text-decoration: none;
+    border: none;
+  }
+
+  .navbar-item {
+    font-size: 16px;
+  }
+
+}
+
+/* Small Screens, Laptops */
+
+@media screen and (min-width: 769px) and (max-width: 1023px) {
+  #nav-links {
+    display: flex;
+    justify-content: stretch auto;
+    background: #35495A !important;
+    text-decoration: none;
+    border: none;
+  }
+
 }
