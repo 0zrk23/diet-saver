@@ -25,19 +25,25 @@ header {
   color: #D5D9D0;
   text-decoration: none;
 }
-
-#site-logo {
-  display: flex;
-  justify-content: center;
-  width: 70%;
-  height: auto;
-}
-
-.navbar-item:hover,
-#logout {
-  background: #35495A !important;
+#logout{
+  font-size: 24px;
+  color: #D5D9D0;
   text-decoration: none;
+  background: #35495A;
   border: none;
+  cursor: pointer;
+}
+#logout:hover{
+  font-size: 24px;
+  color: #35495A;
+  text-decoration: none;
+  background: #D5D9D0 !important;
+}
+.navbar-item:hover {
+  font-size: 24px;
+  color: #35495A;
+  text-decoration: none;
+  background: #D5D9D0 !important;
 }
 
 #carousel-container {
@@ -113,50 +119,4 @@ bottom: 65px;
 padding: 10px;
 bottom: 75px;
 left: 600px;
-}
-
-
-
-
-
-/* Mobile Devices */
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-  #nav-links {
-    display: flex;
-    justify-content: stretch auto;
-    background: #35495A !important;
-    text-decoration: none;
-    border: none;
-  }
-}
-
-/* iPads, Tablets */
-
-@media screen and (min-width: 481px) and (max-width: 768px) {
-  #nav-links {
-    display: flex;
-    justify-content: stretch auto;
-    background: #35495A !important;
-    text-decoration: none;
-    border: none;
-  }
-
-  .navbar-item {
-    font-size: 16px;
-  }
-
-}
-
-/* Small Screens, Laptops */
-
-@media screen and (min-width: 769px) and (max-width: 1023px) {
-  #nav-links {
-    display: flex;
-    justify-content: stretch auto;
-    background: #35495A !important;
-    text-decoration: none;
-    border: none;
-  }
-
 }
