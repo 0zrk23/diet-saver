@@ -18,4 +18,6 @@ if (process.env.JAWSDB_URL) {
   );
 }
 
+console.log('This file ran')
+
 module.exports = sequelize;
